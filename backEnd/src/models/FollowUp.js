@@ -11,17 +11,13 @@ FollowUp.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    process_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: AdoptionProcess,
-        key: 'process_id',
-      },
-    },
     photo_url: {
       type: DataTypes.STRING(50),
     },
     follow_up_date: {
+      type: DataTypes.DATE,
+    },
+    next_follow_up_date: {
       type: DataTypes.DATE,
     },
     comment: {
