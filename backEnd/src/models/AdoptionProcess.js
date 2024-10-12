@@ -1,7 +1,7 @@
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User');
-const Pet = require('./Pet');
+const { DataTypes, Model } = require("sequelize");
+const { sequelize } = require("../config/database");
+const { User } = require("./User");
+const { Pet } = require("./Pet");
 
 class AdoptionProcess extends Model {}
 
@@ -16,14 +16,14 @@ AdoptionProcess.init(
       type: DataTypes.INTEGER,
       references: {
         model: Pet,
-        key: 'pet_id',
+        key: "pet_id",
       },
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: User,
-        key: 'user_id',
+        key: "user_id",
       },
     },
     adoption_date: {
@@ -33,7 +33,7 @@ AdoptionProcess.init(
       type: DataTypes.INTEGER,
     },
     status: {
-      type: DataTypes.ENUM('pending', 'finalized', 'cancelled'),
+      type: DataTypes.ENUM("pending", "finalized", "cancelled"),
     },
     created_by: {
       type: DataTypes.INTEGER,
