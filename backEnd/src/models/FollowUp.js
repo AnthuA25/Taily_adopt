@@ -1,6 +1,6 @@
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/database');
-const AdoptionProcess = require('./AdoptionProcess');
+const { DataTypes, Model } = require("sequelize");
+const { sequelize } = require("../config/database");
+const { AdoptionProcess } = require("./AdoptionProcess");
 
 class FollowUp extends Model {}
 
@@ -27,7 +27,7 @@ FollowUp.init(
       type: DataTypes.TEXT,
     },
     status: {
-      type: DataTypes.ENUM('pending', 'complete', 'overdue'),
+      type: DataTypes.ENUM("pending", "complete", "overdue"),
     },
     created_by: {
       type: DataTypes.INTEGER,
