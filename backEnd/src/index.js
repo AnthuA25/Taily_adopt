@@ -1,13 +1,13 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import { sequelize } from './config/database';
-import { testConnection } from './utils/connection';
+const express = require('express');
+const dotenv = require('dotenv');
+const { sequelize } = require('./config/database');
+const { testConnection } = require('./utils/connection');
 
 
 dotenv.config();
 const app = express();
 app.use(express.json())
-app.use(router)
+// app.use(router)
 const PORT = 8000;
 
 app.get('/', (req, res) => {
