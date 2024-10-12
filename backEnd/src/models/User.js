@@ -34,16 +34,9 @@ User.init(
       type: DataTypes.ENUM('adoptant', 'rescuer', 'shelter'),
       allowNull: false,
     },
-    state: {
+    status: {
       type: DataTypes.ENUM('active', 'inactive'),
       defaultValue: 'active',
-    },
-    created_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    modified_on: {
-      type: DataTypes.DATE,
     },
     created_by: {
       type: DataTypes.INTEGER,

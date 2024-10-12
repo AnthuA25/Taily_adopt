@@ -42,16 +42,9 @@ Pet.init(
     photo_url: {
       type: DataTypes.STRING(50),
     },
-    state: {
+    status: {
       type: DataTypes.ENUM('available', 'adopted'),
       allowNull: false,
-    },
-    created_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    modified_on: {
-      type: DataTypes.DATE,
     },
     created_by: {
       type: DataTypes.INTEGER,

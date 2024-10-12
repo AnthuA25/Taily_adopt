@@ -30,15 +30,8 @@ FollowUp.init(
     clinical_comment: {
       type: DataTypes.TEXT,
     },
-    state: {
-      type: DataTypes.ENUM('good', 'needs_attention', 'emergency'),
-    },
-    created_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    modified_on: {
-      type: DataTypes.DATE,
+    status: {
+      type: DataTypes.ENUM('pending', 'complete', 'overdue'),
     },
     created_by: {
       type: DataTypes.INTEGER,

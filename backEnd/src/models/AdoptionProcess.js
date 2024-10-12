@@ -32,15 +32,8 @@ AdoptionProcess.init(
     adoption_days: {
       type: DataTypes.INTEGER,
     },
-    state: {
+    status: {
       type: DataTypes.ENUM('pending', 'finalized', 'cancelled'),
-    },
-    created_on: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-    modified_on: {
-      type: DataTypes.DATE,
     },
     created_by: {
       type: DataTypes.INTEGER,
