@@ -14,7 +14,7 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://mp22a488b28bb9286b0b.free.beeceptor.com/auth/login', {
+      const response = await fetch('http://localhost:8000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -23,13 +23,12 @@ export const Login = () => {
 
       if (response.ok) {
         // Guardar el token en localStorage
-        localStorage.setItem('token', data.token);
-        console.log(data.email)
+        localStorage.setItem('token', data.data.token);
 
         // Establece la URL de redirección basada en el rol
-        if (data.role === 'adoptante') {
+        if (data.data.rol === 'adoptant') {
           window.location.href = '/adoptante';
-        } else if (data.rol === 'rescatista' || data.rol === 'organizacion') {
+        } else if (data.data.rol === 'rescuer' || data.data.rol === 'shelter') {
           window.location.href = '/rescatista';
         }
       } else {
