@@ -26,6 +26,16 @@ const createAnUser = async (data) => {
   return res;
 };
 
+const getUserById = async (id) => {
+  try {
+    const user = await User.findByPk(id);
+    return user;
+  } catch (error) {
+    throw new Error("Error fetching user by ID");
+  }
+};
+
 module.exports = {
   createAnUser,
+  getUserById,
 };
