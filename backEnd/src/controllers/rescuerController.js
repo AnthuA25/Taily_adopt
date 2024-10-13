@@ -1,4 +1,4 @@
-const { createPet, getAllFollowUps, getAllAnnouncement, getOneAnnouncement } = require("../services/rescuerServices")
+const { createPet, getAllFollowUps, getAllAnnouncement, getOneAnnouncement, delelePet } = require("../services/rescuerServices")
 
 const newPetAnnouncement = async (req, res) => {
     try {
@@ -58,4 +58,19 @@ const getAnAnnouncements = async (req, res) => {
     }
 }
 
-module.exports = { newPetAnnouncement, announcements, followUps, getAnAnnouncements }
+const deleteAPet = async (req, res) => {
+    try {
+        const { pet_id } = req.params
+        const data = await delelePet(pet_id)
+        if(!data.success){
+            res.status(400).json(data);
+            return;
+        }
+        res.status(200).json(data);
+    } catch (error) {
+        console.log('error', error)
+        res.status(500).json({sucess: false, error: "internal server error"})
+    }
+};
+
+module.exports = { newPetAnnouncement, announcements, followUps, getAnAnnouncements, deleteAPet }
