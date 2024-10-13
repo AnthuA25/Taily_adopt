@@ -47,7 +47,7 @@ const getAllAnnouncement = async (user) => {
 const getOneAnnouncement = async ( pet_id )  => {
     const res = initResponse()
 
-    const getOneAnnouncement = await Pet.findOnef({ where: { pet_id }})
+    const getOneAnnouncement = await Pet.findOne({ where: { pet_id }})
 
     res.success = true;
     res.data = getOneAnnouncement
