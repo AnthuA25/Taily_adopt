@@ -4,6 +4,6 @@ const { updatePetFollowUp } = require('../controllers/adopter_controllers/update
 const router = express.Router();
 
 // Ruta para actualizar la información clínica de la mascota
-router.put('/update/:pet_id', updatePetFollowUp);
+router.put(':pet_id', updatePetFollowUp);
 
 module.exports = router;
