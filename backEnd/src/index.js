@@ -4,12 +4,15 @@ const { sequelize } = require("./config/database");
 const { testConnection } = require("./utils/connection");
 const { User, Pet, FollowUp, AdoptionProces } = require("./models");
 require("./models/relations");
+const router = require('./routes/index');
 
 dotenv.config();
 const app = express();
 app.use(express.json());
-// app.use(router)
+
 const PORT = 8000;
+
+app.use(router);
 
 app.get("/", (req, res) => {
   res.send("¡Welcomeeeee");
