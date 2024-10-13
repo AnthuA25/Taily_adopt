@@ -39,7 +39,7 @@ const sendAdoptionRequestEmail = async ({ adopterName, adopterEmail, adopterPhon
 
   const mailOptions = {
     from: 'gabyr.contact@gmail.com',
-    to: 'gabyr.contact@gmail.com',//[ownerEmail, adopterEmail], // Enviar a ambos
+    to: [ownerEmail, adopterEmail], // Enviar a ambos
     subject: `Solicitud de Adopción para ${petName}`,
     html: message,
   };

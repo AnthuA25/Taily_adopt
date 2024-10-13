@@ -1,10 +1,12 @@
 // controllers/adoptionRequestController.js
+const AdoptionProcess = require('../../models/AdoptionProcess');
 const Pet = require('../../models/Pet');
 const User = require('../../models/User'); // Asegúrate de tener el modelo de User
 const { sendAdoptionRequestEmail } = require('../../services/emailAdoptionRequest')
 
 const requestAdoption = async (req, res) => {
-  const { userId, petId } = req.body;
+  const { petId } = req.body;
+  const { user_id } = req.user;
   try {
     const pet = await Pet.findOne({ where: { pet_id: petId } });
     if (!pet) {
@@ -18,10 +20,13 @@ const requestAdoption = async (req, res) => {
     }
 
     // Obtener información del adoptante
-    const adopter = await User.findOne({ where: { user_id: userId } });
+    const adopter = await User.findOne({ where: { user_id: user_id } });
     if (!adopter) {
       return res.status(404).json({ message: 'Adoptante no encontrado.' });
     }
+
+    const petUpdate = await Pet.update({status: 'adopted', modified_by: user_id}, { where: { pet_id: petId }});
+    const newAdoption = await AdoptionProcess.create({ pet_id: petId, user_id: user_id, adoption_date: new Date(), adoption_days: 0, status: 'pending' });
 
     // Información para el correo
     const emailData = {
@@ -33,6 +38,7 @@ const requestAdoption = async (req, res) => {
       ownerPhone: owner.phone,
       petName: pet.name,
     };
+
 
     // Enviar correos a adoptante y propietario
     await sendAdoptionRequestEmail(emailData);
