@@ -1,8 +1,9 @@
 import { Login } from "./components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Register } from "./components/Register";
-import { HomeAdop } from "./components/HomeAdop";
-import { HomeRes } from "./components/HomeRes";
+import { HomeAdop } from "./components/adopt/HomeAdop";
+import { HomeRes } from "./components/rescuer/HomeRes";
+import { InfoPet } from "./components/adopt/InfoPet";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/adoptante" element={<HomeAdop />} />
           <Route path="/rescatista" element={<HomeRes />} />
+          <Route path="/info" elemet={<InfoPet/>}/>
         </Routes>
       </Router>
     </div>

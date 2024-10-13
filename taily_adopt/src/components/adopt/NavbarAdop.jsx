@@ -1,4 +1,4 @@
-import "../styles/NavbarAdop.css";
+import "../../styles/adopt/NavbarAdop.css";
 
 export const NavbarAdop = () => {
   return (
