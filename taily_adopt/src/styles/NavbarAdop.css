@@ -1,0 +1,21 @@
+.navbar{
+    background: rgba(183, 126, 73, 1);
+    margin: 0;
+    width: 100%;
+    height: 70px;
+    border: 2px solid red;
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    gap: 25px;
+    color: white;
+    font-style: "Poppins", sans-serif;
+}
+.user{
+    width: 50px;
+    height: 50px;
+    background-color: #F7AC59;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+}
