@@ -1,4 +1,5 @@
 .home-adop{
+    box-sizing: border-box;
     width: 100vw;
     height: auto;
     font-style: "Poppins", sans-serif;
@@ -15,68 +16,30 @@
     align-items: center;
     /* border: 2px solid yellow; */
     height: auto;
-    margin: 20px;
+    margin: 50px;
 }
 .all-pets{
-    /* border: 2px solid red; */
-    width: 70%;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
-}
-.photo{
-    background-color: #2C3E50 ;
-    padding: 20px;
-    position: relative;
-}
-
-.heart-icon {
-    position: absolute;
-    top: 10px;  /* Posicionar desde la parte superior */
-    right: 10px;  /* Posicionar desde la derecha */
-    font-size: 1.5rem;  /* Tamaño del ícono */
-    color: white;  /* Color del ícono */
-    cursor: pointer; /* Mostrar que es clicable */
-  }
-  
-  .heart-icon:hover {
-    color: red;  /* Cambia el color del ícono al pasar el cursor por encima */
-  }
-
-.filter{
-    /* border: 2px solid red; */
-    width: 300px;
-    height: 500px;
-    background-color: #96ADD6;
-}
-
-.info-pet{
-    /* border: 2px solid red; */
-    height: auto;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    margin: 0;
-    padding: 0; /* Ajustar el padding para que haya más espacio interno */
     align-items: center;
-    color: white;
-    font-size: 1rem; /* Ajusta el tamaño de la fuente si es necesario */
-    text-align: center;
+    gap: 20px;
 }
-/* .name-pet{
+.photo img{
+    height: 290px;
+}
+.pet-info{
     position: relative;
-    bottom: 20px;
-    border: 2px solid red;
-    font-size: 1.2rem;
-    text-align: start;
-} */
-p {
-    margin: 2px 0; /* Reduce el margen vertical de los párrafos */
-    padding: 0;
+    top: -40px;
+    width: 290px;
+    height: 70px;
+    background-color:rgba(150, 173, 214, 1);
+    color: white;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    box-sizing: border-box;
+    
 }
-
-
-

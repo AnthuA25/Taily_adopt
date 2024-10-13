@@ -5,17 +5,22 @@
     height: 70px;
     border: 2px solid red;
     display: flex;
-    justify-content:end;
+    justify-content:space-between;
     align-items: center;
-    gap: 25px;
     color: white;
     font-style: "Poppins", sans-serif;
 }
-.user{
+.logoNav{
+    margin-left: 20px;
+}
+
+.allNav{
+    margin-right: 30px;
+    display: flex;
+    gap: 100px;
+}
+
+.logoicon{
     width: 50px;
     height: 50px;
-    background-color: #F7AC59;
-    border-radius: 50%;
-    margin: 0;
-    padding: 0;
 }
