@@ -34,16 +34,6 @@ export const AddPet = () => {
       return; // Detén la ejecución si hay campos vacíos
     }
 
-    // Crear un FormData para enviar los datos del formulario y la imagen
-    // const formData = new FormData();
-    // formData.append('image', photo);
-    // formData.append('name', name);
-    // formData.append('gender', gender);
-    // formData.append('location', location);
-    // formData.append('type', type);
-    // formData.append('description', description);
-    // formData.append('status', status);
-
     const token = localStorage.getItem("token");
     const data = {name,gender,location,type,description,photo,status};
     console.log(data)
