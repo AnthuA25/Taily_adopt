@@ -1,6 +1,5 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../config/database");
-const { AdoptionProcess } = require("./AdoptionProcess");
 
 class FollowUp extends Model {}
 

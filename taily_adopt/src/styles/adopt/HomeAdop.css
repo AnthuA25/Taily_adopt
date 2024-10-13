@@ -1,0 +1,45 @@
+.home-adop{
+    box-sizing: border-box;
+    width: 100vw;
+    height: auto;
+    font-style: "Poppins", sans-serif;
+}
+.titlepet{
+    font-size: 2rem;
+    text-align: center;
+    color: #000000;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid yellow; */
+    height: auto;
+    margin: 50px;
+}
+.all-pets{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.photo img{
+    height: 290px;
+}
+.pet-info{
+    position: relative;
+    top: -40px;
+    width: 290px;
+    height: 70px;
+    background-color:rgba(150, 173, 214, 1);
+    color: white;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    box-sizing: border-box;
+    
+}

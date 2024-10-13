@@ -1,34 +1,13 @@
-const { Pet, FollowUp } = require('../../models');
+const { updatePetInfo } = require('../../services/updateServices');
 
-const updatePetFollowUp = async (req, res) => {
-  const { pet_id } = req.params;
-  const { clinical_comment, follow_up_date, next_follow_up_date, status } = req.body;
-
+// Controller for updating the pet's clinical information
+const updatePet = async (req, res) => {
   try {
-
-    const pet = await Pet.findByPk(pet_id);
-
-    if (!pet) {
-      return res.status(404).json({ message: 'Pet not found' });
-    }
-
-    const updatedFollowUp = await FollowUp.create({
-      clinical_comment,
-      follow_up_date,
-      next_follow_up_date,
-      status,
-      pet_id,
-      created_by: req.user.id, 
-    });
-
-    res.status(200).json({
-      message: 'Pet follow-up updated successfully',
-      data: updatedFollowUp,
-    });
+    // Call the service function directly, passing req and res
+    await updatePetInfo(req, res);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error updating follow-up information' });
+    res.status(500).json({ message: 'Error updating pet information' });
   }
 };
 
-module.exports = { updatePetFollowUp };
+module.exports = { updatePet };

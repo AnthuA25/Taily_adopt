@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const { sequelize } = require("./config/database");
 const { testConnection } = require("./utils/connection");
 const { User, Pet, FollowUp, AdoptionProces } = require("./models");
+const cors = require("cors");
 const router = require("./routes");
 require("./models/relations");
 
@@ -10,6 +11,7 @@ require("./models/relations");
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(router)
 const PORT = 8000;
 
