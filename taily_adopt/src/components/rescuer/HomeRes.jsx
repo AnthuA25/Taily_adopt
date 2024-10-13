@@ -41,7 +41,7 @@ export const HomeRes = () => {
     <div className="admin">
       <div className="nav-admin">
         <div className="btn-admin">
-          <Link to="/rescatista/nueva-publicacion">
+          <Link to="/nueva-publicacion">
             <button>
               <FaPlus /> Publicar nueva mascota
             </button>
