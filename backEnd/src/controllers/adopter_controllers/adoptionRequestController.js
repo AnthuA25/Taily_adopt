@@ -5,10 +5,10 @@ const User = require('../../models/User'); // Asegúrate de tener el modelo de U
 const { sendAdoptionRequestEmail } = require('../../services/emailAdoptionRequest')
 
 const requestAdoption = async (req, res) => {
-  const { petId } = req.body;
+  const { pet_id } = req.body;
   const { user_id } = req.user;
   try {
-    const pet = await Pet.findOne({ where: { pet_id: petId } });
+    const pet = await Pet.findOne({ where: { pet_id: pet_id } });
     if (!pet) {
       return res.status(404).json({ message: 'No se encuentra la mascota seleccionada.' });
     }
@@ -25,8 +25,8 @@ const requestAdoption = async (req, res) => {
       return res.status(404).json({ message: 'Adoptante no encontrado.' });
     }
 
-    const petUpdate = await Pet.update({status: 'adopted', modified_by: user_id}, { where: { pet_id: petId }});
-    const newAdoption = await AdoptionProcess.create({ pet_id: petId, user_id: user_id, adoption_date: new Date(), adoption_days: 0, status: 'pending' });
+    const petUpdate = await Pet.update({status: 'adopted', modified_by: user_id}, { where: { pet_id: pet_id }});
+    const newAdoption = await AdoptionProcess.create({ pet_id: pet_id, user_id: user_id, adoption_date: new Date(), adoption_days: 0, status: 'pending' });
 
     // Información para el correo
     const emailData = {
