@@ -7,7 +7,7 @@ export const NavbarAdop = () => {
   return (
     <div className="navbar">
       <div className="logoNav">
-        <Link to="/login">
+        <Link to="/adoptante">
           <img src={logo} alt="" />
         </Link>
       </div>
