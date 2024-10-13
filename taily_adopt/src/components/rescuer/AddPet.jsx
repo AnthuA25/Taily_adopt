@@ -14,6 +14,18 @@ export const AddPet = () => {
   const [photo, setPhoto] = useState(null);
   const status = "available";
 
+  const uploadPhoto = async(file) =>{
+    const formData = new FormData();
+    formData.append("image",file);
+    const dataUpload = await fetch("https://api.imgbb.com/1/upload?key=7c113558991178b52f82ab19e84e51bf",{
+      method: "POST",
+      body: formData
+    })
+    const data = await dataUpload.json();
+    setPhoto(data.data.url)
+    console.log(data);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,24 +35,28 @@ export const AddPet = () => {
     }
 
     // Crear un FormData para enviar los datos del formulario y la imagen
-    const formData = new FormData();
-    formData.append('image', photo);
-    formData.append('name', name);
-    formData.append('gender', gender);
-    formData.append('location', location);
-    formData.append('type', type);
-    formData.append('description', description);
-    formData.append('status', status);
+    // const formData = new FormData();
+    // formData.append('image', photo);
+    // formData.append('name', name);
+    // formData.append('gender', gender);
+    // formData.append('location', location);
+    // formData.append('type', type);
+    // formData.append('description', description);
+    // formData.append('status', status);
 
     const token = localStorage.getItem("token");
+    const data = {name,gender,location,type,description,photo,status};
+    console.log(data)
+    console.log(JSON.stringify(data))
     try {
       const response = await fetch("http://localhost:8000/rescuer/announcement", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
-          // No incluyas 'Content-Type', el navegador lo maneja automáticamente
+          "Content-Type": "application/json",
         },
-        body: formData,
+        //body: {name,gender,location,type,description,photo,status},
+        body: JSON.stringify({name,gender,location,type,description,photo_url:photo,status})
       });
 
       if (!response.ok) {
@@ -64,9 +80,10 @@ export const AddPet = () => {
       alert("Error al crear la publicación: " + error.message);
     }
   };
+
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
-    setPhoto(file);
+    uploadPhoto(file);
   };
 
   return (
