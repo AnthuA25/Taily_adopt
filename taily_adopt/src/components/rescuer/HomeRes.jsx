@@ -1,6 +1,7 @@
 import "../../styles/rescuer/HomeRes.css";
 import patitas from "../../assets/patitas.png";
-import { FaUserCircle, FaPlus } from "react-icons/fa";
+import { FaUserCircle, FaPlus, FaPencilAlt } from "react-icons/fa";
+import { LuEye } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { useState,useEffect} from "react";
 
@@ -66,9 +67,13 @@ export const HomeRes = () => {
         {pets.length > 0 ? (
           pets.map((pet) => (
             <div key={pet.pet_id} className="pet-card">
-              <h3>{pet.name}</h3>
-              <img src={pet.photo_url} alt={pet.name} />
-              <p>{pet.description}</p>
+              <div className="card-image">
+                <img src={pet.photo_url || 'https://via.placeholder.com/246x360'} alt={pet.name} />
+              </div>
+              <div className="card-info">
+                <LuEye className="icon"/>
+                <FaPencilAlt className="icon"  />
+              </div>
             </div>
           ))
         ) : (

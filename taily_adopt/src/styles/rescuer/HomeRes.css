@@ -50,3 +50,46 @@
     text-align: center;
     color: #2C3E50;
 }
+
+.pet-list {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pet-card {
+    width: 246px;
+    height: 362px;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 8px -8px 0px -4px rgba(0,0,0,0.75);
+}
+
+.pet-card .card-image {
+    flex: 1;
+    height: 227px
+}
+
+.pet-card .card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.pet-card .card-info {
+    background-color: #96ADD6;
+    color: #FFFCF2;
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 0.8rem;
+}
+
+.pet-card .card-info .icon {
+    width: 30px;
+    height: 30px;
+    padding: 1rem;
+    cursor: pointer;
+}
