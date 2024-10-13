@@ -10,6 +10,7 @@ import { HomeAdop } from "./components/adopt/HomeAdop";
 import { HomeRes } from "./components/rescuer/HomeRes";
 import { DetailPet } from "./components/adopt/DetailPet";
 import { AddPet } from "./components/rescuer/AddPet";
+import { EditPet } from "./components/rescuer/EditPet";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/rescatista" element={<HomeRes />} />
             <Route path="/nueva-publicacion" element={<AddPet />} />
             <Route path="/pet/:pet_id" element={<DetailPet />} />
+            <Route path="/edit/:pet_id" element={<EditPet/>} />
           </Routes>
         </Router>
     </div>

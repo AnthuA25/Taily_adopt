@@ -35,7 +35,8 @@ export const HomeRes = () => {
         console.error("Error al eliminar la mascota:", error.message);
       }
     }
-  }
+  };
+
 
   // Cargar mascotas al cargar el componente
   useEffect(() => {
@@ -81,7 +82,7 @@ export const HomeRes = () => {
                 className="icon"
                 onClick={() => handleDeletePet(pet.pet_id)}
                 />
-                <FaPencilAlt className="icon"  />
+                <Link to={`/edit/${pet.pet_id}`}><FaPencilAlt className="icon"  /></Link>
               </div>
             </div>
           ))
