@@ -1,0 +1,52 @@
+.admin {
+  width: 100vw;
+}
+.nav-admin {
+  background: rgba(183, 126, 73, 1);
+  margin: 0;
+  width: 100%;
+  height: 70px;
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-sizing: border-box;
+  padding:10px;
+}
+.btn-admin button{
+    width: 200px;
+    background-color: #F7AC59;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 20px 20px 20px 0;
+    cursor: pointer;
+}
+.profile-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.profile-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+.profile-date{
+    margin: 0;
+    padding: 0;
+    text-align: end;
+}
+.profile-date span{
+    position: relative;
+    top: -22px;
+    font-weight: lighter;
+}
+.title-publ{
+    text-align: center;
+    color: #2C3E50;
+}

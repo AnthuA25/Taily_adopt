@@ -1,0 +1,22 @@
+.form-r{
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.login-text-r{
+    color:#96ADD6;
+    font-weight: bolder;
+    font-size: 3rem;
+    font-style: "Poppins", sans-serif;
+    margin-top: 10px;
+}
+.p-register{
+    margin: 0px;
+}
+
+
