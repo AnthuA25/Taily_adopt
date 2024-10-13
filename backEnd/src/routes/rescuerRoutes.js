@@ -8,6 +8,7 @@ router.get('/announcement', isAuthenticated, rescuerController.announcements);
 router.get('/announcement/:pet_id', isAuthenticated, rescuerController.getAnAnnouncements);
 router.post('/announcement', isAuthenticated, rescuerController.newPetAnnouncement);
 router.delete('/announcement/:pet_id', isAuthenticated, rescuerController.deleteAPet)
+router.put('/announcement/:pet_id', isAuthenticated, rescuerController.updateAPet)
 
 
 // Followups
