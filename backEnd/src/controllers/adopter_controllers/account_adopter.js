@@ -1,3 +1,4 @@
+const Pet  = require('../../models/Pet');
 const { getAllPets } = require('../../services/petServices');
 
 const getListPets = async (req, res) => {
@@ -14,5 +15,18 @@ const getListPets = async (req, res) => {
   }
 };
 
-module.exports = { getListPets };
+const getSinglePet = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const pet = await Pet.findByPk(id);
+    if (!pet) {
+      return res.status(404).json({ message: 'Pet not found' });
+    }
+    return res.status(200).json(pet);
+  } catch (error) {
+    console.error('Error al obtener la mascota:', error);
+    return res.status(500).send('Ocurrió un error al obtener la mascota');
+  }
+};
 
+module.exports = { getListPets, getSinglePet };

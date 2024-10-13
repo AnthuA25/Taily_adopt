@@ -9,9 +9,10 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     logging:false,
     dialectOptions: {
         ssl: {
-            require: true, // o { rejectUnauthorized: false } si estás en un entorno de desarrollo
-        },
-    },
+            require: true,
+            rejectUnauthorized: false // Deshabilita la validación del certificado
+        }
+    }
 });
 
 module.exports = { sequelize };
