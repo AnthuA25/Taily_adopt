@@ -2,10 +2,11 @@ import { NavbarAdop } from "./NavbarAdop.jsx";
 import "../../styles/adopt/HomeAdop.css";
 import patitas from "../../assets/patitas.png";
 // import puppy from "../../assets/puppy.jpeg";
-import { FaHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Loading } from "../Loading.jsx";
 import { Link } from "react-router-dom";
+import { CiHeart } from "react-icons/ci";
+
 
 
 export const HomeAdop = () => {
@@ -48,16 +49,17 @@ export const HomeAdop = () => {
         Mascotas en adopción <img src={patitas} alt="" />{" "}
       </h3>
       <div className="container">
-        <div className="all-pets">
+      <div className="pet-list">
           {petList.length > 0 ? (
             petList.map((pet) => (
-              <div key={pet.id} className="photo">
-                <Link to={`/pet/${pet.pet_id}`}>
-                  <img src={pet.photo_url} alt={pet.name} />
-                  <div className="pet-info">
-                    <h3>{pet.name}</h3>
-                    <FaHeart />
-                  </div>
+              <div key={pet.pet_id} className="pet-card no-shadow">
+              <Link to={`/pet/${pet.pet_id}`}>
+                <div className="card-image">
+                  <img src={pet.photo_url || 'https://via.placeholder.com/246x360'} alt={pet.name} />
+                </div>
+                <div className="card-info-center" >
+                  <CiHeart className="icon"/>
+                </div>
                 </Link>
               </div>
             ))
