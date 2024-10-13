@@ -23,7 +23,7 @@ function App() {
             <Route path="/adoptante" element={<HomeAdop />} />
             <Route path="/rescatista" element={<HomeRes />} />
             <Route path="/nueva-publicacion" element={<AddPet />} />
-            <Route path="/pet/:pet_id" elemet={<DetailPet />} />
+            <Route path="/pet/:pet_id" element={<DetailPet />} />
           </Routes>
         </Router>
     </div>
