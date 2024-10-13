@@ -10,7 +10,7 @@ export const Register = () => {
         email: "",
         phone: "",
         address: "",
-        role: "",
+        rol: "",
         password: ""
       });
       const handleChange = (e) =>{
@@ -22,15 +22,16 @@ export const Register = () => {
       const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const response = await fetch("https://mp22a488b28bb9286b0b.free.beeceptor.com/users", {
+            const response = await fetch("http://localhost:8000/users", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(formData),
             });
-      
+            
             const data = await response.json();
+            console.log(data)
             
             if (response.ok) {
               alert("Usuario registrado con éxito");
@@ -40,7 +41,7 @@ export const Register = () => {
                 email: "",
                 phone: "",
                 address: "",
-                role: "",
+                rol: "",
                 password: ""
               });
             } else {
@@ -105,8 +106,8 @@ export const Register = () => {
           <div className="form-group">
             <input 
                 type="text"
-                name="role"
-                value={formData.role}
+                name="rol"
+                value={formData.rol}
                 onChange={handleChange} 
                 required />
             <label className="lb-name">
@@ -115,7 +116,7 @@ export const Register = () => {
           </div>
           <div className="form-group">
             <input 
-                type="text"
+                type="password"
                 name="password" 
                 value={formData.password}
                 onChange={handleChange} 
@@ -128,7 +129,7 @@ export const Register = () => {
             <a href="#">¿Olvidaste tu contraseña?</a>
           </p>
           <button type="submit" className="login-button">
-            Iniciar Sesión
+            Registrarse
           </button>
         </form>
       </div>
