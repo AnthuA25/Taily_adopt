@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(router)
 const PORT = 8000;
 
+app.use(router);
+
 app.get("/", (req, res) => {
   res.send("¡Welcomeeeee");
 });
