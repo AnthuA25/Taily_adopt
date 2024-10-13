@@ -1,40 +1,45 @@
 import "../../styles/rescuer/HomeRes.css";
 import patitas from "../../assets/patitas.png";
 import { FaUserCircle, FaPlus, FaPencilAlt } from "react-icons/fa";
-import { LuEye } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import { useState,useEffect} from "react";
+import { CiLogout } from "react-icons/ci";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { deletePet, fetchPets } from "../../services/petService";
 
 export const HomeRes = () => {
   const [pets, setPets] = useState([]);
+  const navigate = useNavigate();
 
-  const fetchPets = async () => {
-    const token = localStorage.getItem("token");
+  const handleLogout = async () => {
+    localStorage.removeItem("token");
+
+    navigate("/login");
+  };
+
+  const loadPets = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8000/rescuer/announcement",{
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          }
-        });
-      if (!response.ok) {
-        throw new Error("Error al obtener las mascotas");
-      }
-      const data = await response.json();
-      if (data && data.data) {
-        setPets(data.data);
-      } else {
-        console.error("Error: la respuesta no tiene el formato esperado.");
-      }
+      const petsData = await fetchPets();
+      setPets(petsData);
     } catch (error) {
-      console.error("Error al hacer fetch:", error.message);
+      console.error("Error al cargar mascotas:", error.message);
     }
   };
+  
+  const handleDeletePet = async (pet_id) =>{
+    if (window.confirm("¿Estás seguro de que deseas eliminar esta mascota?")) {
+      try {
+        await deletePet(pet_id); // Llama a la función para eliminar la mascota
+        setPets((prevPets) => prevPets.filter((pet) => pet.pet_id !== pet_id)); // Actualiza el estado para eliminarla visualmente
+      } catch (error) {
+        console.error("Error al eliminar la mascota:", error.message);
+      }
+    }
+  }
+
   // Cargar mascotas al cargar el componente
   useEffect(() => {
-    fetchPets();
+    loadPets();
   }, []);
 
   return (
@@ -56,6 +61,7 @@ export const HomeRes = () => {
               <span>rescatista</span>
             </div>
             <FaUserCircle className="logoicon" />
+            <CiLogout className="logout" onClick={handleLogout} style={{ cursor: "pointer" }} />
           </div>
         </div>
       </div>
@@ -71,7 +77,10 @@ export const HomeRes = () => {
                 <img src={pet.photo_url || 'https://via.placeholder.com/246x360'} alt={pet.name} />
               </div>
               <div className="card-info">
-                <LuEye className="icon"/>
+              <FaRegTrashCan 
+                className="icon"
+                onClick={() => handleDeletePet(pet.pet_id)}
+                />
                 <FaPencilAlt className="icon"  />
               </div>
             </div>
