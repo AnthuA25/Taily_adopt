@@ -68,4 +68,18 @@ const delelePet = async ( pet_id ) =>{
    return res;
   }
 
-module.exports = { createPet, getAllFollowUps, getAllAnnouncement, getOneAnnouncement, delelePet }
+  const updatePet = async ( pet_id, data ) => {
+    const res = initResponse()
+
+    const findThePet = await Pet.findOne({ where: { pet_id} })
+    if(!findThePet){
+        res.error = "Pet not found";
+        return res;
+    }
+    const updatedPet = await findThePet.update(data);
+    res.success = true;
+    res.data = updatedPet;
+    return res;
+  }
+
+module.exports = { createPet, getAllFollowUps, getAllAnnouncement, getOneAnnouncement, delelePet, updatePet }
