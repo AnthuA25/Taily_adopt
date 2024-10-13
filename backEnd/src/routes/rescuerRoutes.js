@@ -7,6 +7,8 @@ const { isAuthenticated } = require("../middleware");
 router.get('/announcement', isAuthenticated, rescuerController.announcements);
 router.get('/announcement/:pet_id', isAuthenticated, rescuerController.getAnAnnouncements);
 router.post('/announcement', isAuthenticated, rescuerController.newPetAnnouncement);
+router.delete('/announcement/:pet_id', isAuthenticated, rescuerController.deleteAPet)
+
 
 // Followups
 router.get('/followup', isAuthenticated, rescuerController.followUps)
