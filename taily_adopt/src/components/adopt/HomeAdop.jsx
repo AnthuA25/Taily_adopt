@@ -1,6 +1,7 @@
 import { NavbarAdop } from "./NavbarAdop.jsx";
 import "../../styles/adopt/HomeAdop.css";
 import puppy from "../../assets/puppy.jpeg";
+import { FaHeart } from "react-icons/fa";
 export const HomeAdop = () => {
   return (
     <div className="home-adop">
@@ -9,6 +10,7 @@ export const HomeAdop = () => {
       <div className="container">
         <div className="all-pets">
           <div className="photo">
+          <FaHeart className="heart-icon"/>
             <img src={puppy} alt="dog" />
             <div className="info-pet">
               <h4 className="name-pet">Puppy</h4>
