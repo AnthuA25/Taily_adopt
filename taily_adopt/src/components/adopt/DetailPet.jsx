@@ -8,7 +8,7 @@ export const DetailPet = () => {
   const { pet_id } = useParams(); // ID de la URL
   const [pet, setPet] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [ setError] = useState(null);
   const [rescuer, setRescuer] = useState(null);
 
   const fetchRescuerDetails = async (user_id) => {
