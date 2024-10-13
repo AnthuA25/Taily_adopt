@@ -20,7 +20,7 @@ export const EditPet = () => {
   useEffect(() => {
     const loadPetData = async () => {
       try {
-        const data = await fetchPetById(pet_id); // Cargar datos del perro por ID
+        const data = await fetchPetById(pet_id); 
         setPetData(data);
       } catch (error) {
         console.error("Error al cargar los datos del perro:", error.message);
@@ -29,12 +29,32 @@ export const EditPet = () => {
     loadPetData();
   }, [pet_id]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPetData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const uploadPhoto = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    const response = await fetch("https://api.imgbb.com/1/upload?key=7c113558991178b52f82ab19e84e51bf", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    console.log("data",data)
+    return data.data.url;
+  };
+
+  const handleChange = async(e) => {
+    const { name, value, type, files } = e.target;
+    if (type === "file") {
+      const photoUrl = await uploadPhoto(files[0]);
+      setPetData((prevData) => ({
+        ...prevData,
+        photo_url: photoUrl, 
+      }));
+    } else {
+      setPetData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,13 +88,13 @@ export const EditPet = () => {
         <h2 className="add-text">Crear una nueva publicación</h2>
         <form className="form-add" onSubmit={handleSubmit}>
           <div className="form-group-add">
-            <input type="text" value={petData.name} onChange={handleChange} />
+            <input type="text" name="name" value={petData.name} onChange={handleChange} />
             <label className="lb-name">
               <span className="text-name">Nombre</span>
             </label>
           </div>
           <div className="form-group-add">
-            <input type="text" value={petData.gender} onChange={handleChange} />
+            <input type="text" name="gender" value={petData.gender} onChange={handleChange} />
             <label className="lb-name">
               <span className="text-name">Género</span>
             </label>
@@ -82,6 +102,7 @@ export const EditPet = () => {
           <div className="form-group-add">
             <input
               type="text"
+              name="location"
               value={petData.location}
               onChange={handleChange}
             />
@@ -90,7 +111,7 @@ export const EditPet = () => {
             </label>
           </div>
           <div className="form-group-add">
-            <input type="text" value={petData.type} onChange={handleChange} />
+            <input type="text" name="type" value={petData.type} onChange={handleChange} />
             <label className="lb-name">
               <span className="text-name">Especie</span>
             </label>
@@ -98,6 +119,7 @@ export const EditPet = () => {
           <div className="form-group-add">
             <input
               type="text"
+              name="description"
               value={petData.description}
               onChange={handleChange}
             />
@@ -106,7 +128,7 @@ export const EditPet = () => {
             </label>
           </div>
           <div className="form-group-add">
-            <input type="text" value={petData.status} onChange={handleChange} />
+            <input type="text" name="status" value={petData.status} onChange={handleChange} />
             <label className="lb-name">
               <span className="text-name">Estado</span>
             </label>
@@ -115,6 +137,7 @@ export const EditPet = () => {
             <input
               type="file"
               accept="image/*"
+              name="photo_url"
               onChange={handleChange}
               required
             />
