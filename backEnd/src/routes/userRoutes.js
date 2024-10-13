@@ -5,6 +5,7 @@ const { isAuthenticated } = require("../middleware");
 
 
 router.get("/", isAuthenticated, (req, res) => res.send(`Hola soy el user ${req.user.user_id}`))
-router.post('/', userController.createUser)
+router.post('/', userController.createUser);
+router.get('/:id', isAuthenticated, userController.getUser);
 
 module.exports = router;

@@ -13,3 +13,6 @@ AdoptionProcess.belongsTo(User, { foreignKey: "user_id" });
 
 AdoptionProcess.hasMany(FollowUp, { foreignKey: "process_id" });
 FollowUp.belongsTo(AdoptionProcess, { foreignKey: "process_id" });
+
+Pet.hasMany(FollowUp, { foreignKey: 'pet_id' });
+FollowUp.belongsTo(Pet, { foreignKey: 'pet_id' });

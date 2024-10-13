@@ -1,9 +1,18 @@
 import "../../styles/adopt/NavbarAdop.css";
 import logo from "../../assets/logo.png";
 import { FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { CiLogout } from "react-icons/ci";
 
 export const NavbarAdop = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    localStorage.removeItem("token");
+
+    navigate("/login");
+  };
+
   return (
     <div className="navbar">
       <div className="logoNav">
@@ -15,6 +24,7 @@ export const NavbarAdop = () => {
         <h3>Mascotas</h3>
         <h3>Favoritos</h3>
         <FaUserCircle className="logoicon" />
+        <CiLogout className="logout" onClick={handleLogout} style={{ cursor: "pointer" }} />
       </div>
     </div>
   );
